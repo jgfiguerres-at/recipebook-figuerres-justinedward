@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 def recipe_list(request):
     ctx = {
         "recipes": [
@@ -68,6 +69,7 @@ def recipe_list(request):
     }
 
     return render(request, "recipebook/recipe_list.html", ctx)
+
 
 def recipe(request, number):
     if (number == 1):
