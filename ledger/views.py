@@ -28,9 +28,9 @@ def recipe_detail(request, id):
 
 class RecipeListView(ListView):
     model = Recipe
-    template_name = 'recipebook/recipe_list.html'
+    template_name = 'recipebook/recipe_list.html' # default value
 
 
 class RecipeDetailView(DetailView):
     model = Recipe
-    template_name = 'recipebook/recipe.html'
+    template_name = 'recipebook/recipe.html' # default value
