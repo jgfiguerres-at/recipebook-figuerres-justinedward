@@ -15,16 +15,22 @@ def recipe_list(request):
 
 
 def recipe_detail(request, id):
-    recipe = recipe.objects.get(pk=id)
+    recipe = Recipe.objects.get(pk=id)
+    ingredients = Ingredient.objects.filter(recipe__recipe__name=recipe.name)
+    recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
 
     return render(request, "recipebook/recipe.html", {
-        "ingredients": ingredients
+        "recipe" : recipe,
+        "ingredients": ingredients,
+        "recipe_ingredients": recipe_ingredients
     })
+
 
 class RecipeListView(ListView):
     model = Recipe
-    template_name = 'blogpage/recipe_list.html'
+    template_name = 'recipebook/recipe_list.html'
+
 
 class RecipeDetailView(DetailView):
     model = Recipe
-    template_name = 'blogpage/recipe.html'
+    template_name = 'recipebook/recipe.html'
