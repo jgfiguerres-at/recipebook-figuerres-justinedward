@@ -19,7 +19,7 @@ def recipe_detail(request, id):
     ingredients = Ingredient.objects.filter(recipe__recipe__name=recipe.name)
     recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
 
-    return render(request, "recipebook/recipe.html", {
+    return render(request, "recipebook/recipe_detail.html", {
         "recipe" : recipe,
         "ingredients": ingredients,
         "recipe_ingredients": recipe_ingredients
@@ -33,4 +33,4 @@ class RecipeListView(ListView):
 
 class RecipeDetailView(DetailView):
     model = Recipe
-    template_name = 'recipebook/recipe.html' # default value
+    template_name = 'recipebook/recipe_detail.html' # default value
