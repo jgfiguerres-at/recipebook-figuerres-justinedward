@@ -36,12 +36,12 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name="recipe_ingredients"
+        related_name="recipe"
     )
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name="recipe_ingredients"
+        related_name="ingredients"
     )
 
     def __str__(self):
@@ -51,6 +51,6 @@ class RecipeIngredient(models.Model):
         return reverse('recipe_ingredient', args=[str(self.name)])
     
     class Meta:
-        ordering = ['name']
+        ordering = ['quantity']
         verbose_name = 'recipe ingredient'
         verbose_name_plural = 'recipe ingredients'
