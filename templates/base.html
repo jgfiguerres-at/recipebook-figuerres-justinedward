@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>{% block title %}Recipe Book{% endblock %}</title>
+        {% block styles %} {% endblock %}
+    </head>
+
     <body>
-        <header>
-            <h2>Recipe Book</h2>
-        </header>
+        {% block header %}<h2>Recipe Book</h2>{% endblock %}
+        {% if user.is_authenticated %}
+                <h2>Hello, {{ user.username }}!</h2>
+                {% include 'registration/logout.html' %}
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+        <br>
+        <br>
         <div id="content">
             {% block content %} {% endblock %}
         </div>
+        {% block scripts %} {% endblock %}
     </body>
 </html>
