@@ -7,7 +7,7 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    bio = models.CharField(
+    bio = models.TextField(
         max_length=512,
         validators=[MinLengthValidator(256)]
     )
