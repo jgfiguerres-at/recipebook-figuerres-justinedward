@@ -3,7 +3,7 @@
 {% block title %}Recipe List{% endblock %}
 
 {% block content %}
-    <h3>All Recipes</h3>
+    <h3>Recipe List</h3>
     <ul>
         {% for recipe in recipe_list %}
             <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></li>
