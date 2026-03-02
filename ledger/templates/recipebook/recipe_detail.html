@@ -2,8 +2,11 @@
 
 {% block title %}Recipe List | {{ recipe.name }}{% endblock %}
 
-{% block header %}<h3>{{ recipe.name }}</h3>{% endblock %}
 {% block content %}
+    <h3>{{ recipe.name }}</h3>
+    <p>by {{ recipe.author }}</p>
+    <br>
+    <p>Ingredients:</p>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li>
@@ -12,7 +15,7 @@
             </li>
         {% endfor %}
     </ul>
-    <p>{{ recipe.author }}</p>
     <br>
-    <a href="{% url 'ledger:recipe_list' %}">Return to task list</a>
+    <br>
+    <a href="{% url 'ledger:recipe_list' %}">Return to recipe list</a>
 {% endblock %}

@@ -1,17 +1,17 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 
-from .models import Ingredient, Recipe, RecipeIngredient
+from .models import Profile, Ingredient, Recipe, RecipeIngredient
 
 
 def recipe_list(request):
     recipes = Recipe.objects.all()
 
-    return render(request, "recipebook/recipe_list.html", {
-        "recipes": recipes,
+    return render(request, 'recipebook/recipe_list.html', {
+        'recipes': recipes,
     })
 
 
@@ -20,9 +20,9 @@ def recipe_detail(request, id):
     ingredients = Ingredient.objects.filter(recipe__recipe__name=recipe.name)
     recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
 
-    return render(request, "recipebook/recipe_detail.html", {
-        "recipe" : recipe,
-        "ingredients": ingredients,
+    return render(request, 'recipebook/recipe_detail.html', {
+        'recipe' : recipe,
+        'ingredients': ingredients,
     })
 
 

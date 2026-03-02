@@ -10,6 +10,14 @@ class Profile(models.Model):
     name = models.CharField(max_length=50)
     bio = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'profile'
+        verbose_name_plural = 'profiles'
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=50)
@@ -63,3 +71,6 @@ class RecipeIngredient(models.Model):
         on_delete=models.CASCADE,
         related_name='ingredients'
     )
+
+    def __str__(self):
+        return "Ingredient " + str(self.pk)

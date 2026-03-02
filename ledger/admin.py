@@ -37,7 +37,7 @@ class IngredientAdmin(admin.ModelAdmin):
 
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
-    list_display = ('name', 'author', 'created_on')
+    list_display = ('name', 'author', 'created_on', 'updated_on')
     list_filter = ()
     search_fields = ('name',)
     
@@ -45,6 +45,7 @@ class RecipeAdmin(admin.ModelAdmin):
         ('Details', {
             'fields': [
                 'name',
+                'author',
             ]
         })
     ]
@@ -52,6 +53,7 @@ class RecipeAdmin(admin.ModelAdmin):
     inlines = [
         RecipeIngredientInline,
     ]
+
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
