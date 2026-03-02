@@ -8,12 +8,7 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    bio = models.CharField(
-        max_length=511,
-        validators=[
-            MinLengthValidator(255, 'The field must contain at least 255 characters')
-        ]
-    )
+    bio = models.CharField(max_length=255)
 
 
 class Ingredient(models.Model):
@@ -36,7 +31,9 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
-        related_name='profile'
+        related_name='profile',
+        null=True,
+        blank=True,
     )
 
     created_on = models.DateTimeField(auto_now_add=True)
@@ -59,7 +56,7 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name='recipe'
+        related_name='recipe',
     )
     recipe = models.ForeignKey(
         Recipe,

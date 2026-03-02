@@ -20,4 +20,5 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('ledger.urls'), name='ledger'),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

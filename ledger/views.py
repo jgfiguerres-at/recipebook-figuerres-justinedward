@@ -11,7 +11,7 @@ def recipe_list(request):
     recipes = Recipe.objects.all()
 
     return render(request, "recipebook/recipe_list.html", {
-        "recipes": recipes
+        "recipes": recipes,
     })
 
 
@@ -26,7 +26,7 @@ def recipe_detail(request, id):
     })
 
 
-class RecipeListView(ListView):
+class RecipeListView(LoginRequiredMixin, ListView):
     model = Recipe
     template_name = 'recipebook/recipe_list.html' # default value
 

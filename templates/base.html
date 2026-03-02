@@ -7,7 +7,6 @@
     </head>
 
     <body>
-        {% block header %}<h2>Recipe Book</h2>{% endblock %}
         {% if user.is_authenticated %}
                 <h2>Hello, {{ user.username }}!</h2>
                 {% include 'registration/logout.html' %}
@@ -16,6 +15,7 @@
         {% endif %}
         <br>
         <br>
+        {% block header %}<h2>Recipe Book</h2>{% endblock %}
         <div id="content">
             {% block content %} {% endblock %}
         </div>
