@@ -37,8 +37,8 @@ class IngredientAdmin(admin.ModelAdmin):
 
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
-    list_display = ('name', 'author', 'created_on', 'updated_on')
-    list_filter = ()
+    list_display = ('name', 'author', 'created_on', 'updated_on',)
+    list_filter = ('author',)
     search_fields = ('name',)
     
     fieldsets = [

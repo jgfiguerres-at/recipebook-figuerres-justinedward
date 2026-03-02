@@ -26,7 +26,7 @@ def recipe_detail(request, id):
     })
 
 
-class RecipeListView(LoginRequiredMixin, ListView):
+class RecipeListView(ListView):
     model = Recipe
     template_name = 'recipebook/recipe_list.html' # default value
 
