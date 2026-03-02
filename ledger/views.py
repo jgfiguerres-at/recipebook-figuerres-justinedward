@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView
@@ -30,6 +31,6 @@ class RecipeListView(ListView):
     template_name = 'recipebook/recipe_list.html' # default value
 
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipebook/recipe_detail.html' # default value

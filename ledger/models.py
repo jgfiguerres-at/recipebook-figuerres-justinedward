@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.urls import reverse
 
@@ -7,7 +8,12 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    bio = models.CharField(min_length=255)
+    bio = models.CharField(
+        max_length=511,
+        validators=[
+            MinLengthValidator(255, 'The field must contain at least 255 characters')
+        ]
+    )
 
 
 class Ingredient(models.Model):

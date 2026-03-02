@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}Recipe List | {{ recipe.name }}{% block title %}
+
 {% block content %}
     <h3>{{ recipe.name }}</h3>
     <ul>
@@ -10,4 +12,5 @@
             </li>
         {% endfor %}
     </ul>
+    <p>{{ recipe.author }}</p>
 {% endblock %}
