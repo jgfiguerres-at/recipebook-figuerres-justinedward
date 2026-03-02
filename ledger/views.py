@@ -22,7 +22,6 @@ def recipe_detail(request, id):
     return render(request, "recipebook/recipe_detail.html", {
         "recipe" : recipe,
         "ingredients": ingredients,
-        "recipe_ingredients": recipe_ingredients
     })
 
 

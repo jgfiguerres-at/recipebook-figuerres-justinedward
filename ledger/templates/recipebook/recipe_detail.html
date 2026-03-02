@@ -3,14 +3,10 @@
 {% block content %}
     <h3>{{ recipe.name }}</h3>
     <ul>
-        {% for ingredient in ingredients %}
+        {% for ingredient in recipe.ingredients.all %}
             <li>
-            {% for recipe_ingredient in recipe_ingredients %}
-                {% if recipe_ingredient.ingredient == ingredient %}
-                    {{ recipe_ingredient.quantity }} 
-                    {{ ingredient.name }}
-                {% endif %}
-            {% endfor %}
+                {{ ingredient.ingredient.name }}
+                {{ ingredient.quantity }}
             </li>
         {% endfor %}
     </ul>

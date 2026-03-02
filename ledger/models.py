@@ -7,10 +7,10 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
         return reverse('ledger:ingredient_detail', args=[int(self.pk)])
-    
+
     class Meta:
         ordering = ['name']
         verbose_name = 'ingredient'
@@ -25,7 +25,7 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse('ledger:recipe_detail', args=[int(self.pk)])
-    
+
     class Meta:
         ordering = ['name']
         verbose_name = 'recipe'
@@ -42,10 +42,5 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name="ingredient"
+        related_name="ingredients"
     )
-    
-    class Meta:
-        ordering = ['quantity']
-        verbose_name = 'recipe ingredient'
-        verbose_name_plural = 'recipe ingredients'
