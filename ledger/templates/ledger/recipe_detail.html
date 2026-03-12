@@ -25,6 +25,10 @@
         {% endfor %}
     </ul>
     <br>
+    <a href="{{ recipe.get_absolute_url }}/add_image">
+        Add images
+    </a>
+    <br>
     <br>
     <a href="{% url 'ledger:recipe_list' %}">
         Return to recipe list

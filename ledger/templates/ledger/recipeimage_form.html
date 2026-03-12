@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe List | Add Image {% endblock %}
+
+{% block content %}
+    <h3>Add a new image to the recipe</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add image">
+    </form>
+{% endblock %}
