@@ -5,7 +5,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
 from .forms import RecipeForm, RecipeImageForm
-from .models import Ingredient, Recipe, RecipeIngredient, RecipeImage
+from .models import (
+    Profile, Ingredient, Recipe,
+    RecipeIngredient, RecipeImage
+)
 
 
 class RecipeListView(ListView):
@@ -26,6 +29,12 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
+
+    def form_valid(self, form):
+        form.instance.author = Profile.objects.get(
+            user=self.request.user
+        )
+        return super().form_valid(form)
 
 
 class RecipeImageCreateView(LoginRequiredMixin, CreateView):
