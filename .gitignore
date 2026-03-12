@@ -3,6 +3,7 @@ db.sqlite3
 *.pyc
 *.log
 
+media/images/*
 __pycache__/
 env/
 myenv/

@@ -4,6 +4,11 @@
 
 {% block content %}
     <h3>{{ recipe.name }}</h3>
+    {% for image in recipe_images %}
+        {% if image.recipe == recipe %}
+            <img src="{{ image.image.url }}" alt="{{ image.description }}">
+        {% endif %}
+    {% endfor %}
     <p>
         Created {{ recipe.created_on|date:'d M Y' }},
         updated {{ recipe.updated_on|date:'d M Y' }}
