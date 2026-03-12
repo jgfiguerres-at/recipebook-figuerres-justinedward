@@ -34,7 +34,7 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     form_class = RecipeImageForm
 
     def form_valid(self, form):
-        form.instance.recipe__pk = self.kwargs['pk']
+        form.instance.recipe_id = self.kwargs['pk']
         return super().form_valid(form)
 
     def get_success_url(self):
