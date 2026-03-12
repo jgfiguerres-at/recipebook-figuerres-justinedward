@@ -4,7 +4,10 @@
 
 {% block content %}
     <h3>{{ recipe.name }}</h3>
-    <p>Created {{ recipe.created_on|date:'d M Y' }}, updated {{ recipe.updated_on|date:'d M Y' }}</p>
+    <p>
+        Created {{ recipe.created_on|date:'d M Y' }},
+        updated {{ recipe.updated_on|date:'d M Y' }}
+    </p>
     <p>By {{ recipe.author }}</p>
     <br>
     <p>Ingredients:</p>
@@ -18,5 +21,7 @@
     </ul>
     <br>
     <br>
-    <a href="{% url 'ledger:recipe_list' %}">Return to recipe list</a>
+    <a href="{% url 'ledger:recipe_list' %}">
+        Return to recipe list
+    </a>
 {% endblock %}
