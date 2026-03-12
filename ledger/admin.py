@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
-from .models import Profile, Ingredient, Recipe, RecipeIngredient
+from .models import Profile, Ingredient, Recipe, RecipeIngredient, RecipeImage
 
 
 class ProfileInLine(admin.StackedInline):
@@ -18,6 +18,10 @@ class UserAdmin(BaseUserAdmin):
 
 class RecipeIngredientInline(admin.TabularInline):
     model = RecipeIngredient
+
+
+class RecipeImageInline(admin.TabularInline):
+    model = RecipeImage
 
 
 class IngredientAdmin(admin.ModelAdmin):
@@ -40,7 +44,7 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ('name', 'author', 'created_on', 'updated_on',)
     list_filter = ('author',)
     search_fields = ('name',)
-    
+
     fieldsets = [
         ('Details', {
             'fields': [
@@ -49,9 +53,10 @@ class RecipeAdmin(admin.ModelAdmin):
             ]
         })
     ]
-    
+
     inlines = [
         RecipeIngredientInline,
+        RecipeImageInline,
     ]
 
 
