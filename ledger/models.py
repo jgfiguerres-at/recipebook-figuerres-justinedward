@@ -41,7 +41,7 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
-        related_name='profile',
+        related_name='recipes',
         null=True,
         blank=True,
     )
@@ -84,7 +84,7 @@ class RecipeImage(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name='recipe',
+        related_name='images',
         null=True,
         blank=True,
     )
