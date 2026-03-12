@@ -12,28 +12,28 @@ class Profile(models.Model):
         validators=[MinLengthValidator(256)]
     )
 
-    def __str__(self):
-        return self.name
-
     class Meta:
         ordering = ['name']
         verbose_name = 'profile'
         verbose_name_plural = 'profiles'
 
+    def __str__(self):
+        return self.name
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=50)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'ingredient'
+        verbose_name_plural = 'ingredients'
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('ledger:ingredient_detail', args=[int(self.pk)])
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'ingredient'
-        verbose_name_plural = 'ingredients'
 
 
 class Recipe(models.Model):
@@ -49,16 +49,16 @@ class Recipe(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'recipe'
+        verbose_name_plural = 'recipes'
+
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('ledger:recipe_detail', args=[int(self.pk)])
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'recipe'
-        verbose_name_plural = 'recipes'
 
 
 class RecipeIngredient(models.Model):
