@@ -19,7 +19,7 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["recipe_images"] = RecipeImage.objects.all()
+        context['recipe_images'] = RecipeImage.objects.all()
         return context
 
 
@@ -31,6 +31,11 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     model = RecipeImage
     form_class = RecipeImageForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pk'] = self.kwargs['pk']
+        return context
 
     def form_valid(self, form):
         form.instance.recipe_id = self.kwargs['pk']

@@ -9,4 +9,9 @@
         {{ form.as_p }}
         <input type="submit" value="Add recipe">
     </form>
+    <br>
+    <br>
+    <a href="{% url 'ledger:recipe_list' %}">
+        Return to recipe list
+    </a>
 {% endblock %}
